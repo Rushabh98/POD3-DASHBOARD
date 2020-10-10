@@ -2,6 +2,7 @@ import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
@@ -14,7 +15,20 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { MobileFriendlyRounded, VerticalAlignBottom } from '@material-ui/icons';
+import Dummy from './Dummy';
+import Table from './Dashboard';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -30,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
       
     },
   },
+
+ 
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -45,11 +61,11 @@ const useStyles = makeStyles((theme) => ({
       width: 'auto',
     },
   },
-  searchIcon: {
+  iconButton: {
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
-    pointerEvents: 'none',
+    pointerEvents: 'auto',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -82,6 +98,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -96,6 +113,15 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    
+  }
+  
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -108,18 +134,45 @@ export default function PrimarySearchAppBar() {
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}  style={{width:'100px'}}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-    </Menu>
+    <div>
+    
+      <Menu
+    anchorEl={anchorEl}
+    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    id={menuId}
+    keepMounted
+    transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+    open={isMenuOpen}
+    onClose={handleMenuClose}
+  >
+    <div style={{display:"grid"}}>
+    <Button onClick={handleMenuClose}  style={{width:'100px'}}>PROFILE</Button>
+    < Button onClick={handleClickOpen} style={{width:'100px'}}>Logout</Button>
+    </div>
+          
+    <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to logout?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} variant="outlined" color="primary">
+            Yes
+          </Button>
+          <Button onClick={handleClose} variant="outlined" color="primary" autoFocus>
+           No
+          </Button>
+        </DialogActions>
+      </Dialog>
+  </Menu>
+  </div>
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -165,7 +218,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" >
+      <AppBar position="fixed" >
         <Toolbar>
           <IconButton
             edge="start"
@@ -182,8 +235,10 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+            <div className={classes.iconButton}>
+            <IconButton type="submit" className={classes.iconButton} aria-label="search">
+        <SearchIcon />
+      </IconButton>
             </div>
             <InputBase
               placeholder="Search…"
