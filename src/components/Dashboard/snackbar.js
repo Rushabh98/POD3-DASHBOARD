@@ -12,23 +12,12 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import { MobileFriendlyRounded, VerticalAlignBottom } from '@material-ui/icons';
-
-import Table from './Dashboard';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -40,62 +29,62 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     fontSize:'30px',
     [theme.breakpoints.up('sm')]: {
-      display: 'block',
+    display: 'block',
       
     },
   },
 
  
     search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: '50px',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
+      position: 'relative',
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: fade(theme.palette.common.white, 0.15),
+      '&:hover': {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
+     },
+      marginRight: theme.spacing(2),
+      marginLeft: '50px',
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(3),
+        width: 'auto',
+      },
   },
   iconButton: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+      padding: theme.spacing(0, 2),
+      height: '100%',
+      position: 'absolute',
+      pointerEvents: 'auto',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+     color: 'inherit',
   },
   inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('md')]: {
+        width: '20ch',
+      },
   },
   sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
+      display: 'none',
+      [theme.breakpoints.up('md')]: {
+        display: 'flex',
+      },
   },
   sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
+      display: 'flex',
+      [theme.breakpoints.up('md')]: {
+        display: 'none',
+      },
     },
-  },
-}));
+  }));
 
 export default function PrimarySearchAppBar() {
   const [open, setOpen] = React.useState(false);
@@ -116,12 +105,20 @@ export default function PrimarySearchAppBar() {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
+    setOpen(false);
+  }
+
+  const handleClose1 = () => {
+    window.location.href="http://localhost:3003/login";
     setOpen(false);
     
   }
-  
+  const handleClose2 = () => {
+    window.location.reload();
+    setOpen(false);
+    
+  }
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -163,10 +160,10 @@ export default function PrimarySearchAppBar() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} variant="outlined" color="primary">
+          <Button onClick={handleClose1} variant="outlined" color="primary">
             Yes
           </Button>
-          <Button onClick={handleClose} variant="outlined" color="primary" autoFocus>
+          <Button onClick={handleClose2} variant="outlined" color="primary" autoFocus>
            No
           </Button>
         </DialogActions>

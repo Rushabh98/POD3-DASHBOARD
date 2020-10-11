@@ -1,10 +1,10 @@
-import React,{Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Table from './components/Dashboard/Dashboard';
 import * as serviceWorker from './serviceWorker';
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import DemoForm from './SignUp/signup';
 import  App from './SignIn/finallogin';
 
@@ -20,9 +20,9 @@ ReactDOM.render(
     <Switch>
     <Route path="/login" component={App}/> 
 
-      <Route path="/dashboard" component={Table} /> 
+    <Route path="/dashboard" component={Table} /> 
 
-       <Route path="/Signup" component={DemoForm} /> 
+    <Route path="/Signup" component={DemoForm} /> 
 
      
     </Switch>

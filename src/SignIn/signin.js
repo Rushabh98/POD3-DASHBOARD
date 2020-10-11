@@ -274,21 +274,22 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Avatar from '@material-ui/core/Avatar';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './signin.css';
-import Header from './Header';
 import React from 'react';
 import axios from 'axios';
-
+// import {
+//     BrowserRouter as Router,
+//     Route,
+//     Switch,
+//     Redirect,
+//     useLocation
+//     } from "react-router-dom";
 
 export default class FormUser extends React.Component {
 
 
     state = {
-
     userId: '',
     password: '',
     response: [],
@@ -306,37 +307,33 @@ handleSubmit = event =>
 event.preventDefault();
 const { userId, password } = this.state;
 axios.post('http://localhost:8083/api/signin', ({ userId, password })) 
- .then(res => {
-  const response=res.data;
-  this.setState({response});
-    console.log(res);
-    console.log(res.data);
+    .then(res=> {
+        const response=res.data;
+        this.setState({response});
+        console.log(res);
+        console.log(res.data);
+        if(this.state.response.message==="Successful login")
+            window.location.href="http://localhost:3003/dashboard";
   }).catch((error) => {
-    
-    console.log("Error",error);
+        const response =error.data;
+        this.setState({response});
+        console.log("Error",error);
 });
  }
-
 render() {
-
-  
 
 return (
 
 <Container component="main" maxWidth="md">
 
 <CssBaseline />
-<div   className="card col-8 col-lg-12 login-card mt-2 hv-center">  
-{/* <Avatar>
 
-<LockOutlinedIcon />
-</Avatar> */}
 <Typography display="block" align="center" component="h1" variant="subtitle1">
           Sign in
 </Typography>
-       
-        
- <form   onSubmit={this.handleSubmit}>
+         
+ <form   onSubmit=
+    {this.handleSubmit}>
 
   <label >Dealer'Id:  
     <input type="text" 
@@ -345,28 +342,27 @@ return (
           onChange={this.handleChange}/>
   </label>
   <br/>
+
   <label>Password:  
     <input type="password" 
            name="password" 
            className="form-control" 
-           onChange={this.handleChange}/>
-           
+           onChange={this.handleChange}/>      
     </label>
     <br/>
   <button type="submit"
-           className="btn btn-dark">
-             
+           className="btn btn-dark">        
     Sign In
-    
   </button>
   <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Forgot password?
+              Forgot password?
               </Link>
-            </Grid>
+              </Grid>
+            
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="http://localhost:3003/Signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
@@ -375,7 +371,7 @@ return (
 
 <div class="myDiv">{this.state.response.message}</div> 
 
-</div>  
+  
 
 </Container>
 
