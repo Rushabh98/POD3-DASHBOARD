@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
  
-  search: {
+    search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -236,7 +236,7 @@ export default function PrimarySearchAppBar() {
           <div className={classes.sectionDesktop}>
           <div className={classes.search}>
             <div className={classes.iconButton}>
-            <IconButton type="submit" className={classes.iconButton} aria-label="search">
+            <IconButton type="submit" id="search" className={classes.iconButton} aria-label="search">
         <SearchIcon />
       </IconButton>
             </div>
