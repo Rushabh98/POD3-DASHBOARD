@@ -9,7 +9,7 @@ import { MuiPickersUtilsProvider,KeyboardDatePicker} from "@material-ui/pickers"
 import DateFnsUtils from "@date-io/date-fns";
 import { isThisHour } from 'date-fns';
 import Button from '@material-ui/core/Button';
-import avatar from './cover.jpeg';
+
 function KeyboardDatePickerExample(props) {
    const [selectedDate, handleDateChange] = useState(new Date());
  

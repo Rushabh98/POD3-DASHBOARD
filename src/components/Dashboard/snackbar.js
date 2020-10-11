@@ -21,7 +21,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { MobileFriendlyRounded, VerticalAlignBottom } from '@material-ui/icons';
-import Dummy from './Dummy';
+
 import Table from './Dashboard';
 import {
   BrowserRouter as Router,
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
-    marginLeft: 0,
+    marginLeft: '50px',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),

@@ -1,4 +1,4 @@
-input[type=text]{
+/* input[type=text] {​​​​​​​
     width: 45%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -7,19 +7,17 @@ input[type=text]{
     box-sizing: border-box; 
     border-radius: 15px;
     
-  }
-   
-  input[type=password]{
+  }​​​​​​​
+  input[type=password]{​​​​​​​
     width: 45%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box; 
-    border-radius: 15px;
-  }
-   
-  /* button {
+    border-radius : '15px';
+  }​​​​​​​
+  /* button {​​​​​​​
     background-color: #4068bd;
     color: white;
     padding: 14px 20px;
@@ -27,12 +25,11 @@ input[type=text]{
     border: none;
     cursor: pointer;
     width: 50%;
-  }
-   
-  button:hover {
+  }​​​​​​​
+  button:hover {​​​​​​​
     opacity: 0.8;
-  } */
-  .button {
+  }​​​​​​​ */
+  /* .button {​​​​​​​
     padding: 15px 25px;
     font-size: 20px;
     text-align: center;
@@ -43,39 +40,34 @@ input[type=text]{
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-  }
-   
-  .button:hover {background-color: #12cee7}
-   
-  .button:active {
+  }​​​​​​​
+  .button:hover {​​​​​​​background-color: #12cee7}​​​​​​​
+  .button:active {​​​​​​​
     background-color: #12cee7;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
-  }
-   
-  .container {
+  }​​​​​​​
+  .container {​​​​​​​
     padding: 10px;
-  }
-   
-  .myDiv {
+  }​​​​​​​
+  .myDiv {​​​​​​​
     background-color: rgb(210, 230, 173);    
     text-align: center;
-  }
-  select {
+  }​​​​​​​
+  select {​​​​​​​
     margin: 10px;
     width: 45%;
     font-size: 15px;
     padding: 12px 20px;
     border-radius:  15px;
-  }
+  }​​​​​​​
   form
-  {
+  {​​​​​​​
     
       text-align: center;
-  }
-   
+  }​​​​​​​
   avatar
-   {
+   {​​​​​​​
    
           
         float: inherit;   
@@ -83,5 +75,4 @@ input[type=text]{
      margin-top: 10px;
      margin-left: 40px;
       background-color: #12cee7
-    }
-   
+    }​​​​​​​ */ 
